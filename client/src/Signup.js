@@ -10,6 +10,8 @@ import {
   FormHelperText,
 } from '@material-ui/core';
 
+import SideBanner from './components/SideBanner';
+
 const Signup = ({ user, register }) => {
   const history = useHistory();
 
@@ -37,7 +39,8 @@ const Signup = ({ user, register }) => {
 
   return (
     <Grid container justifyContent="center">
-      <Box>
+      <SideBanner />
+      <Box sx={{ flex: 1 }}>
         <Grid container item>
           <Typography>Need to log in?</Typography>
           <Link href="/login" to="/login">
