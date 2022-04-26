@@ -1,6 +1,11 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core/styles';
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
+  breakpoints: {
+    values: {
+      tablet: 768,
+    },
+  },
   typography: {
     fontFamily: 'Open Sans, sans-serif',
     fontSize: 14,
@@ -32,7 +37,7 @@ export const theme = createMuiTheme({
     MuiInput: {
       input: {
         fontSize: 14,
-        fontWeight: '600',
+        fontWeight: 600,
         padding: '8px 5px',
       },
     },
