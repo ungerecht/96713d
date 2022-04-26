@@ -8,7 +8,7 @@ import bubble from '../images/bubble.svg';
 const useStyles = makeStyles(() => ({
   root: {
     justifySelf: 'flex-start',
-    height: '100vh',
+    minHeight: '100vh',
     width: '40%',
     background: `url(${bgImg}), linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)`,
     backgroundBlendMode: 'multiply',
