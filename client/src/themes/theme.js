@@ -1,10 +1,18 @@
 import { createTheme } from '@material-ui/core/styles';
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+
+const customBreakpoints = {
+  values: {
+    tablet: 768,
+    mobile: 320,
+  },
+};
+
+const breakpoints = createBreakpoints({ ...customBreakpoints });
 
 export const theme = createTheme({
   breakpoints: {
-    values: {
-      tablet: 768,
-    },
+    ...breakpoints,
   },
   typography: {
     fontFamily: 'Open Sans, sans-serif',
@@ -22,9 +30,11 @@ export const theme = createTheme({
         color: '#3A8DFF',
         fontWeight: 600,
         height: '54px',
-        minWidth: '140px',
-        padding: '16px 34px',
         borderRadius: '5px',
+        [breakpoints.up('tablet')]: {
+          minWidth: '140px',
+          padding: '16px 34px',
+        },
       },
       containedSizeLarge: {
         fontSize: 16,
