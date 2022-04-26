@@ -16,6 +16,7 @@ import SideBanner from './components/SideBanner';
 const useStyles = makeStyles((theme) => ({
   account: {
     flex: 1,
+    minHeight: '90vh',
     [theme.breakpoints.up('mobile')]: {
       padding: '20px 22px',
     },
