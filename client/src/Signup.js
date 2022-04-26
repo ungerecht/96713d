@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   form: {
-    marginTop: '54px',
+    marginTop: 54,
     [theme.breakpoints.up('mobile')]: {
       marginLeft: 'auto',
       marginRight: 'auto',
@@ -36,19 +36,19 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontWeight: 600,
-    fontSize: '26px',
+    fontSize: 26,
     lineHeight: '40px',
-    marginBottom: '20px',
+    marginBottom: 20,
   },
   text: {
     color: theme.palette.secondary.main,
     fontSize: 14,
     fontWeight: 400,
     [theme.breakpoints.up('mobile')]: {
-      marginRight: '10px',
+      marginRight: 10,
     },
     [theme.breakpoints.up('tablet')]: {
-      marginRight: '30px',
+      marginRight: 30,
     },
   },
 }));
