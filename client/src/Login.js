@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
     fontWeight: 600,
     color: theme.palette.primary.main,
+    padding: 5,
   },
 }));
 
@@ -120,7 +121,12 @@ const Login = ({ user, login }) => {
                   name="password"
                   InputProps={{
                     endAdornment: (
-                      <Link href="" to="" style={{ textDecoration: 'none' }}>
+                      //TODO: link to forgot password page
+                      <Link
+                        href="/login"
+                        to="/login"
+                        style={{ textDecoration: 'none' }}
+                      >
                         <Typography className={classes.forgot}>
                           Forgot?
                         </Typography>
