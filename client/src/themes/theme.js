@@ -29,19 +29,19 @@ export const theme = createTheme({
         backgroundColor: 'white',
         color: '#3A8DFF',
         fontWeight: 600,
-        height: '54px',
-        borderRadius: '5px',
+        height: 54,
+        borderRadius: 5,
         [breakpoints.up('tablet')]: {
-          minWidth: '140px',
+          minWidth: 140,
           padding: '16px 34px',
         },
       },
       containedSizeLarge: {
         fontSize: 16,
         fontWeight: 700,
-        height: '56px',
-        width: '160px',
-        borderRadius: '3px',
+        height: 56,
+        width: 160,
+        borderRadius: 3,
       },
     },
     MuiInput: {
@@ -56,7 +56,7 @@ export const theme = createTheme({
         color: '#B0B0B0 !important',
         fontSize: 14,
         fontWeight: 400,
-        paddingLeft: '5px',
+        paddingLeft: 5,
       },
     },
     MuiInputLabel: {
@@ -66,7 +66,7 @@ export const theme = createTheme({
     },
     MuiInputBase: {
       root: {
-        marginBottom: '26px',
+        marginBottom: 26,
       },
     },
   },
