@@ -101,45 +101,37 @@ const Signup = ({ user, register }) => {
               </Typography>
             </Grid>
             <Grid xs={12}>
-              <FormControl fullWidth>
+              <FormControl fullWidth required>
                 <TextField
-                  InputLabelProps={{
-                    required: false,
-                  }}
                   aria-label="username"
                   label="Username"
                   name="username"
                   type="text"
-                  required
                 />
               </FormControl>
             </Grid>
             <Grid xs={12}>
-              <FormControl fullWidth>
+              <FormControl fullWidth required>
                 <TextField
-                  InputLabelProps={{
-                    required: false,
-                  }}
                   label="E-mail address"
                   aria-label="e-mail address"
                   type="email"
                   name="email"
-                  required
                 />
               </FormControl>
             </Grid>
             <Grid xs={12}>
-              <FormControl fullWidth error={!!formErrorMessage.confirmPassword}>
+              <FormControl
+                fullWidth
+                required
+                error={!!formErrorMessage.confirmPassword}
+              >
                 <TextField
-                  InputLabelProps={{
-                    required: false,
-                  }}
                   aria-label="password"
                   label="Password"
                   type="password"
                   inputProps={{ minLength: 6 }}
                   name="password"
-                  required
                 />
                 <FormHelperText>
                   {formErrorMessage.confirmPassword}
@@ -147,17 +139,17 @@ const Signup = ({ user, register }) => {
               </FormControl>
             </Grid>
             <Grid xs={12}>
-              <FormControl fullWidth error={!!formErrorMessage.confirmPassword}>
+              <FormControl
+                fullWidth
+                required
+                error={!!formErrorMessage.confirmPassword}
+              >
                 <TextField
-                  InputLabelProps={{
-                    required: false,
-                  }}
                   label="Confirm Password"
                   aria-label="confirm password"
                   type="password"
                   inputProps={{ minLength: 6 }}
                   name="confirmPassword"
-                  required
                 />
                 <FormHelperText>
                   {formErrorMessage.confirmPassword}
