@@ -12,9 +12,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import SideBanner from './components/SideBanner';
-import { theme } from './themes/theme';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   account: {
     flex: 1,
     [theme.breakpoints.up('mobile')]: {

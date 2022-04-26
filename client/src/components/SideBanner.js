@@ -1,12 +1,11 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { theme } from '../themes/theme';
 
 import bgImg from '../images/bg-img.png';
 import bubble from '../images/bubble.svg';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     justifySelf: 'flex-start',
     background: `url(${bgImg}), linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)`,
