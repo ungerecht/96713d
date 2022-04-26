@@ -15,16 +15,25 @@ import SideBanner from './components/SideBanner';
 import { theme } from './themes/theme';
 
 const useStyles = makeStyles(() => ({
-  signup: {
+  account: {
     flex: 1,
-    padding: '30px 42px',
-    alignContent: 'space-between',
+    [theme.breakpoints.up('mobile')]: {
+      padding: '20px 22px',
+    },
+    [theme.breakpoints.up('tablet')]: {
+      padding: '30px 42px',
+    },
   },
   form: {
     marginTop: '54px',
-    marginLeft: '5.4vw',
-    width: '37vw',
-    justifyContent: 'center',
+    [theme.breakpoints.up('mobile')]: {
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+    [theme.breakpoints.up('tablet')]: {
+      marginLeft: '5.4vw',
+      width: '37vw',
+    },
   },
   title: {
     fontWeight: 600,
@@ -33,10 +42,15 @@ const useStyles = makeStyles(() => ({
     marginBottom: '20px',
   },
   text: {
-    color: `${theme.palette.secondary.main}`,
+    color: theme.palette.secondary.main,
     fontSize: 14,
     fontWeight: 400,
-    marginRight: '30px',
+    [theme.breakpoints.up('mobile')]: {
+      marginRight: '10px',
+    },
+    [theme.breakpoints.up('tablet')]: {
+      marginRight: '30px',
+    },
   },
 }));
 
@@ -69,7 +83,7 @@ const Signup = ({ user, register }) => {
   return (
     <Grid container justifyContent="center">
       <SideBanner />
-      <Box className={classes.signup}>
+      <Box className={classes.account}>
         <Grid container item justifyContent="flex-end" alignItems="center">
           <Typography className={classes.text}>
             Already have an account?
