@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { theme } from '../themes/theme';
 
 import bgImg from '../images/bg-img.png';
 import bubble from '../images/bubble.svg';
@@ -8,14 +9,20 @@ import bubble from '../images/bubble.svg';
 const useStyles = makeStyles(() => ({
   root: {
     justifySelf: 'flex-start',
-    minHeight: '100vh',
-    width: '40%',
     background: `url(${bgImg}), linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)`,
     backgroundBlendMode: 'multiply',
     backgroundRepeat: 'no-repeat',
     mixBlendMode: 'normal',
     backgroundSize: 'cover',
     opacity: 0.85,
+    [theme.breakpoints.up('mobile')]: {
+      width: '100%',
+      minHeight: '75vh',
+    },
+    [theme.breakpoints.up('tablet')]: {
+      width: '40%',
+      minHeight: '100vh',
+    },
   },
   text: { marginTop: '28vh' },
   title: {
