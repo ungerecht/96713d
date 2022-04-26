@@ -93,7 +93,7 @@ const Login = ({ user, login }) => {
             style={{ textDecoration: 'none' }}
           >
             <Button variant="contained" color="default">
-              Register
+              Create account
             </Button>
           </Link>
         </Grid>
@@ -105,10 +105,10 @@ const Login = ({ user, login }) => {
             <Grid xs={12}>
               <FormControl fullWidth required>
                 <TextField
-                  aria-label="username"
-                  label="Username"
-                  name="username"
-                  type="text"
+                  aria-label="email"
+                  label="E-mail address"
+                  name="email"
+                  type="email"
                 />
               </FormControl>
             </Grid>
