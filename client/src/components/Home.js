@@ -82,7 +82,7 @@ const Home = ({ user, logout }) => {
       setConversations((prev) =>
         prev.map((convo) => {
           if (convo.otherUser.id === recipientId) {
-            const convoCopy = { ...convo };
+            const convoCopy = { ...convo, messages: [...convo.messages] };
             convoCopy.messages.push(message);
             convoCopy.latestMessageText = message.text;
             convoCopy.id = message.conversationId;
@@ -113,7 +113,7 @@ const Home = ({ user, logout }) => {
       setConversations((prev) =>
         prev.map((convo) => {
           if (convo.id === message.conversationId) {
-            const convoCopy = { ...convo };
+            const convoCopy = { ...convo, messages: [...convo.messages] };
             convoCopy.messages.push(message);
             convoCopy.latestMessageText = message.text;
             return convoCopy;
@@ -140,7 +140,7 @@ const Home = ({ user, logout }) => {
         } else {
           return convo;
         }
-      }),
+      })
     );
   }, []);
 
@@ -154,7 +154,7 @@ const Home = ({ user, logout }) => {
         } else {
           return convo;
         }
-      }),
+      })
     );
   }, []);
 
