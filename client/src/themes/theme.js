@@ -31,6 +31,7 @@ export const theme = createTheme({
         fontWeight: 600,
         height: 54,
         borderRadius: 5,
+        boxShadow: "0px 2px 12px 0px rgba(74, 106, 149, 0.2)",
         [breakpoints.up("tablet")]: {
           minWidth: 140,
           padding: "16px 34px",
