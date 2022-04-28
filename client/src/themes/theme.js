@@ -4,6 +4,7 @@ import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 const customBreakpoints = {
   values: {
     tablet: 768,
+    mobileLg: 425,
     mobile: 320,
   },
 };
@@ -32,7 +33,7 @@ export const theme = createTheme({
         height: 54,
         borderRadius: 5,
         boxShadow: "0px 2px 12px 0px rgba(74, 106, 149, 0.2)",
-        [breakpoints.up("tablet")]: {
+        [breakpoints.up("mobileLg")]: {
           minWidth: 140,
           padding: "16px 34px",
         },

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("mobile")]: {
       padding: "20px 22px",
     },
-    [theme.breakpoints.up("tablet")]: {
+    [theme.breakpoints.up("mobileLg")]: {
       padding: "30px 42px",
     },
   },
