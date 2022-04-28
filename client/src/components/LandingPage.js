@@ -32,12 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingPage = ({ type, handleSubmit, formErrorMessage }) => {
   const classes = useStyles();
-  let opposite;
-  if (type === "login") {
-    opposite = "register";
-  } else {
-    opposite = "login";
-  }
+  const opposite = type === "login" ? "register" : "login";
+
   return (
     <Grid container justifyContent="center">
       <SideBanner />
