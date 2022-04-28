@@ -1,73 +1,10 @@
 import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import {
-  Grid,
-  Box,
-  Typography,
-  Button,
-  FormControl,
-  TextField,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
-import SideBanner from "./components/SideBanner";
-
-const useStyles = makeStyles((theme) => ({
-  account: {
-    flex: 1,
-    minHeight: "90vh",
-    [theme.breakpoints.up("mobile")]: {
-      padding: "20px 22px",
-    },
-    [theme.breakpoints.up("mobileLg")]: {
-      padding: "30px 42px",
-    },
-  },
-  form: {
-    marginTop: 54,
-    [theme.breakpoints.up("mobile")]: {
-      marginLeft: "auto",
-      marginRight: "auto",
-    },
-    [theme.breakpoints.up("tablet")]: {
-      marginLeft: "5.4vw",
-      width: "37vw",
-    },
-  },
-  title: {
-    fontWeight: 600,
-    fontSize: 26,
-    lineHeight: "40px",
-    marginBottom: 40,
-  },
-  text: {
-    color: theme.palette.secondary.main,
-    fontSize: 14,
-    fontWeight: 400,
-    [theme.breakpoints.up("mobile")]: {
-      marginRight: 10,
-    },
-    [theme.breakpoints.up("tablet")]: {
-      marginRight: 30,
-    },
-  },
-  link: {
-    textDecoration: "none",
-  },
-  button: {
-    marginTop: 20,
-  },
-  forgot: {
-    fontSize: 12,
-    fontWeight: 600,
-    color: theme.palette.primary.main,
-    padding: 5,
-  },
-}));
+import LandingPage from "./components/LandingPage";
 
 const Login = ({ user, login }) => {
   const history = useHistory();
-  const classes = useStyles();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -83,68 +20,7 @@ const Login = ({ user, login }) => {
     if (user && user.id) history.push("/home");
   }, [user, history]);
 
-  return (
-    <Grid container justifyContent="center">
-      <SideBanner />
-      <Box className={classes.account}>
-        <Grid container item justifyContent="flex-end" alignItems="center">
-          <Typography className={classes.text}>
-            Don't have an account?
-          </Typography>
-          <Link className={classes.link} href="/register" to="/register">
-            <Button variant="contained" color="default">
-              Create account
-            </Button>
-          </Link>
-        </Grid>
-        <form onSubmit={handleLogin}>
-          <Grid className={classes.form} container justifyContent="center">
-            <Grid xs={12}>
-              <Typography className={classes.title}>Welcome back!</Typography>
-            </Grid>
-            <Grid xs={12}>
-              <FormControl fullWidth required>
-                <TextField
-                  aria-label="email"
-                  label="E-mail address"
-                  name="email"
-                  type="email"
-                />
-              </FormControl>
-            </Grid>
-            <Grid xs={12}>
-              <FormControl fullWidth required>
-                <TextField
-                  label="Password"
-                  aria-label="password"
-                  type="password"
-                  name="password"
-                  InputProps={{
-                    endAdornment: (
-                      <Link className={classes.link} href="/login" to="/login">
-                        <Typography className={classes.forgot}>
-                          Forgot?
-                        </Typography>
-                      </Link>
-                    ),
-                  }}
-                />
-              </FormControl>
-            </Grid>
-            <Button
-              className={classes.button}
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="large"
-            >
-              Login
-            </Button>
-          </Grid>
-        </form>
-      </Box>
-    </Grid>
-  );
+  return <LandingPage type="login" handleSubmit={handleLogin} />;
 };
 
 export default Login;
