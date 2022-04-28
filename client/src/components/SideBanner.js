@@ -8,6 +8,8 @@ import bubble from "../images/bubble.svg";
 const useStyles = makeStyles((theme) => ({
   root: {
     justifySelf: "flex-start",
+    width: "40%",
+    minHeight: "100vh",
     background: `url(${bgImg}), linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)`,
     backgroundBlendMode: "multiply",
     backgroundRepeat: "no-repeat",
@@ -15,12 +17,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     opacity: 0.85,
     [theme.breakpoints.up("mobile")]: {
-      width: "100%",
-      minHeight: "75vh",
+      display: "none",
     },
     [theme.breakpoints.up("tablet")]: {
-      width: "40%",
-      minHeight: "100vh",
+      display: "flex",
     },
   },
   text: { marginTop: "28vh" },
