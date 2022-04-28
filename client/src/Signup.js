@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import {
   Grid,
   Box,
@@ -8,47 +8,47 @@ import {
   FormControl,
   TextField,
   FormHelperText,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-import SideBanner from './components/SideBanner';
+import SideBanner from "./components/SideBanner";
 
 const useStyles = makeStyles((theme) => ({
   account: {
     flex: 1,
-    minHeight: '90vh',
-    [theme.breakpoints.up('mobile')]: {
-      padding: '20px 22px',
+    minHeight: "90vh",
+    [theme.breakpoints.up("mobile")]: {
+      padding: "20px 22px",
     },
-    [theme.breakpoints.up('tablet')]: {
-      padding: '30px 42px',
+    [theme.breakpoints.up("tablet")]: {
+      padding: "30px 42px",
     },
   },
   form: {
     marginTop: 54,
-    [theme.breakpoints.up('mobile')]: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
+    [theme.breakpoints.up("mobile")]: {
+      marginLeft: "auto",
+      marginRight: "auto",
     },
-    [theme.breakpoints.up('tablet')]: {
-      marginLeft: '5.4vw',
-      width: '37vw',
+    [theme.breakpoints.up("tablet")]: {
+      marginLeft: "5.4vw",
+      width: "37vw",
     },
   },
   title: {
     fontWeight: 600,
     fontSize: 26,
-    lineHeight: '40px',
+    lineHeight: "40px",
     marginBottom: 20,
   },
   text: {
     color: theme.palette.secondary.main,
     fontSize: 14,
     fontWeight: 400,
-    [theme.breakpoints.up('mobile')]: {
+    [theme.breakpoints.up("mobile")]: {
       marginRight: 10,
     },
-    [theme.breakpoints.up('tablet')]: {
+    [theme.breakpoints.up("tablet")]: {
       marginRight: 30,
     },
   },
@@ -70,14 +70,14 @@ const Signup = ({ user, register }) => {
     const confirmPassword = formElements.confirmPassword.value;
 
     if (password !== confirmPassword) {
-      setFormErrorMessage({ confirmPassword: 'Passwords must match' });
+      setFormErrorMessage({ confirmPassword: "Passwords must match" });
       return;
     }
     await register({ username, email, password });
   };
 
   useEffect(() => {
-    if (user && user.id) history.push('/home');
+    if (user && user.id) history.push("/home");
   }, [user, history]);
 
   return (
@@ -88,7 +88,7 @@ const Signup = ({ user, register }) => {
           <Typography className={classes.text}>
             Already have an account?
           </Typography>
-          <Link href="/login" to="/login" style={{ textDecoration: 'none' }}>
+          <Link href="/login" to="/login" style={{ textDecoration: "none" }}>
             <Button variant="contained" color="default">
               Login
             </Button>

@@ -1,5 +1,5 @@
-import { createTheme } from '@material-ui/core/styles';
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+import { createTheme } from "@material-ui/core/styles";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
 const customBreakpoints = {
   values: {
@@ -15,25 +15,25 @@ export const theme = createTheme({
     ...breakpoints,
   },
   typography: {
-    fontFamily: 'Open Sans, sans-serif',
+    fontFamily: "Open Sans, sans-serif",
     fontSize: 14,
     button: {
-      textTransform: 'none',
+      textTransform: "none",
       letterSpacing: 0,
-      fontWeight: 'bold',
+      fontWeight: "bold",
     },
   },
   overrides: {
     MuiButton: {
       contained: {
-        backgroundColor: 'white',
-        color: '#3A8DFF',
+        backgroundColor: "white",
+        color: "#3A8DFF",
         fontWeight: 600,
         height: 54,
         borderRadius: 5,
-        [breakpoints.up('tablet')]: {
+        [breakpoints.up("tablet")]: {
           minWidth: 140,
-          padding: '16px 34px',
+          padding: "16px 34px",
         },
       },
       containedSizeLarge: {
@@ -48,12 +48,12 @@ export const theme = createTheme({
       input: {
         fontSize: 14,
         fontWeight: 600,
-        padding: '8px 5px',
+        padding: "8px 5px",
       },
     },
     MuiFormLabel: {
       root: {
-        color: '#B0B0B0 !important',
+        color: "#B0B0B0 !important",
         fontSize: 14,
         fontWeight: 400,
         paddingLeft: 5,
@@ -61,7 +61,7 @@ export const theme = createTheme({
     },
     MuiInputLabel: {
       shrink: {
-        transform: 'none',
+        transform: "none",
       },
     },
     MuiInputBase: {
@@ -71,7 +71,7 @@ export const theme = createTheme({
     },
   },
   palette: {
-    primary: { main: '#3A8DFF' },
-    secondary: { main: '#B0B0B0' },
+    primary: { main: "#3A8DFF" },
+    secondary: { main: "#B0B0B0" },
   },
 });
