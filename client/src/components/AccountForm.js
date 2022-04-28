@@ -49,7 +49,7 @@ const AccountForm = ({ type, handleSubmit, formErrorMessage }) => {
             {type === "login" ? "Welcome back!" : "Create an account."}
           </Typography>
         </Grid>
-        {type === "register" ? (
+        {type === "register" && (
           <Grid item xs={12}>
             <FormControl fullWidth required>
               <TextField
@@ -60,7 +60,7 @@ const AccountForm = ({ type, handleSubmit, formErrorMessage }) => {
               />
             </FormControl>
           </Grid>
-        ) : null}
+        )}
         <Grid item xs={12}>
           <FormControl fullWidth required>
             <TextField
@@ -98,7 +98,7 @@ const AccountForm = ({ type, handleSubmit, formErrorMessage }) => {
             />
           </FormControl>
         </Grid>
-        {type === "register" ? (
+        {type === "register" && (
           <Grid item xs={12}>
             <FormControl
               fullWidth
@@ -117,7 +117,7 @@ const AccountForm = ({ type, handleSubmit, formErrorMessage }) => {
               </FormHelperText>
             </FormControl>
           </Grid>
-        ) : null}
+        )}
         <Button
           className={type === "login" ? classes.button : null}
           type="submit"
