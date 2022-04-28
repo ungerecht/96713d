@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 30,
     },
   },
+  link: {
+    textDecoration: "none",
+  },
 }));
 
 const Signup = ({ user, register }) => {
@@ -88,7 +91,7 @@ const Signup = ({ user, register }) => {
           <Typography className={classes.text}>
             Already have an account?
           </Typography>
-          <Link href="/login" to="/login" style={{ textDecoration: "none" }}>
+          <Link className={classes.link} href="/login" to="/login">
             <Button variant="contained" color="default">
               Login
             </Button>
