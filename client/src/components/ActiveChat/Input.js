@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { FormControl, FilledInput } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+import { FormControl, FilledInput, FormLabel } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+import InputButton from "./InputButton";
 
 const useStyles = makeStyles(() => ({
   root: {
-    justifySelf: 'flex-end',
+    justifySelf: "flex-end",
     marginTop: 15,
   },
   input: {
     height: 70,
-    backgroundColor: '#F4F6FA',
+    backgroundColor: "#F4F6FA",
     borderRadius: 8,
     marginBottom: 20,
   },
@@ -17,7 +19,8 @@ const useStyles = makeStyles(() => ({
 
 const Input = ({ otherUser, conversationId, user, postMessage }) => {
   const classes = useStyles();
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
+  const [attachments, setAttachments] = useState([]);
 
   const handleChange = (event) => {
     setText(event.target.value);
@@ -33,10 +36,27 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
       recipientId: otherUser.id,
       conversationId,
       sender: conversationId ? null : user,
+      attachments: attachments,
     };
     await postMessage(reqBody);
-    setText('');
+    setText("");
+    setAttachments([]);
   };
+
+  const renderAttachments = (
+    <div className={classes.images} name="poop">
+      {attachments.map((img, i) => {
+        return (
+          <img
+            key={`preview ${i}`}
+            className={classes.preview}
+            src={img}
+            alt={`preview ${i}`}
+          />
+        );
+      })}
+    </div>
+  );
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
@@ -48,6 +68,8 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
           value={text}
           name="text"
           onChange={handleChange}
+          startAdornment={renderAttachments}
+          endAdornment={<InputButton addAttachments={setAttachments} />}
         />
       </FormControl>
     </form>
