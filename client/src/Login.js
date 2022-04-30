@@ -10,7 +10,7 @@ const Login = ({ user, login }) => {
     event.preventDefault();
     const form = event.currentTarget;
     const formElements = form.elements;
-    const username = formElements.username.value;
+    const username = formElements.email.value;
     const password = formElements.password.value;
 
     await login({ username, password });
