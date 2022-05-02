@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormControl, FilledInput, FormLabel } from "@material-ui/core";
+import { FormControl, FilledInput } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import InputButton from "./InputButton";
@@ -43,21 +43,6 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
     setAttachments([]);
   };
 
-  const renderAttachments = (
-    <div className={classes.images} name="poop">
-      {attachments.map((img, i) => {
-        return (
-          <img
-            key={`preview ${i}`}
-            className={classes.preview}
-            src={img}
-            alt={`preview ${i}`}
-          />
-        );
-      })}
-    </div>
-  );
-
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <FormControl fullWidth hiddenLabel>
@@ -68,8 +53,12 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
           value={text}
           name="text"
           onChange={handleChange}
-          startAdornment={renderAttachments}
-          endAdornment={<InputButton addAttachments={setAttachments} />}
+          endAdornment={
+            <InputButton
+              attachments={attachments}
+              setAttachments={setAttachments}
+            />
+          }
         />
       </FormControl>
     </form>
