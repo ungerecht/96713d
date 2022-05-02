@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Badge } from "@material-ui/core";
 import UploadDialog from "./UploadDialog";
 import FileLogo from "../../images/ic-file.svg";
 
-const InputButton = ({ addAttachments }) => {
+const InputButton = ({ attachments, setAttachments }) => {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   const handleDialogOpen = () => {
@@ -17,12 +17,15 @@ const InputButton = ({ addAttachments }) => {
   return (
     <>
       <IconButton onClick={handleDialogOpen}>
-        <img src={FileLogo} alt="Attach File Logo" />
+        <Badge badgeContent={attachments.length} color="error">
+          <img src={FileLogo} alt="Attach File Logo" />
+        </Badge>
       </IconButton>
       <UploadDialog
         open={dialogIsOpen}
         onClose={handleClose}
-        addAttachments={addAttachments}
+        attachments={attachments}
+        setAttachments={setAttachments}
       />
     </>
   );
