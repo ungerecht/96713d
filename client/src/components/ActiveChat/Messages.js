@@ -12,12 +12,12 @@ const Messages = (props) => {
         const time = moment(message.createdAt).format("h:mm");
 
         return message.senderId === userId ? (
-          <>
-            <SenderBubble key={message.id} text={message.text} time={time} />
-            {message.attachments.map((image, i) => {
-              return <img key={`image ${i}`} src={image} />;
-            })}
-          </>
+          <SenderBubble
+            key={message.id}
+            text={message.text}
+            attachments={message.attachments}
+            time={time}
+          />
         ) : (
           <OtherUserBubble
             key={message.id}
