@@ -1,18 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import {
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
-  Button,
   IconButton,
   makeStyles,
   Typography,
+  Badge,
 } from "@material-ui/core";
 
 import CloseIcon from "@material-ui/icons/Close";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,35 +37,40 @@ const useStyles = makeStyles((theme) => ({
   fileInput: {
     display: "none",
   },
-  uploaded: {
+  attachments: {
     display: "flex",
     maxWidth: 448,
     flexWrap: "wrap",
-    gap: 10,
+    gap: 28,
+    padding: "20px 24px",
   },
   preview: {
-    boxSizing: "border-box",
-    height: 72,
-    border: "solid 2px black",
+    "& span": {
+      padding: 1,
+      height: 26,
+    },
+  },
+  image: {
+    display: "block",
+    height: 110,
+    border: "2px solid black",
     borderRadius: 5,
   },
   removeButton: {
     padding: 0,
-    width: 20,
   },
 }));
 
-const UploadDialog = ({ open, onClose, addAttachments }) => {
+const UploadDialog = ({ open, onClose, attachments, setAttachments }) => {
   const classes = useStyles();
-
-  const [images, setImages] = useState([]);
 
   const handleInputChange = async (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     try {
       const data = await uploadImage(file);
-      setImages((prev) => [...prev, data.url]);
+      setAttachments((prev) => [...prev, data.url]);
+      event.target.value = "";
     } catch (error) {
       console.log(error);
     }
@@ -97,30 +101,14 @@ const UploadDialog = ({ open, onClose, addAttachments }) => {
   };
 
   const handleRemoveImage = (img) => {
-    const filtered = images.filter((str) => str !== img);
-    setImages(filtered);
+    const filtered = attachments.filter((str) => str !== img);
+    setAttachments(filtered);
   };
-
-  const renderImages = images.map((img, i) => {
-    return (
-      <div key={`preview ${i}`}>
-        <img className={classes.preview} src={img} alt={`preview ${i}`} />
-        <IconButton
-          variant="contained"
-          aria-label="delete"
-          className={classes.removeButton}
-          onClick={() => handleRemoveImage(img)}
-        >
-          <DeleteIcon />
-        </IconButton>
-      </div>
-    );
-  });
 
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
-        Upload images
+        Attach images
         <IconButton
           aria-label="close"
           className={classes.closeButton}
@@ -143,20 +131,28 @@ const UploadDialog = ({ open, onClose, addAttachments }) => {
           />
         </label>
       </DialogContent>
-      <DialogContent className={classes.uploaded}>{renderImages}</DialogContent>
-      <DialogActions>
-        <Button
-          variant="outlined"
-          size="small"
-          color="primary"
-          onClick={() => {
-            addAttachments(images);
-            onClose();
-          }}
-        >
-          Attach
-        </Button>
-      </DialogActions>
+      <DialogContent className={classes.attachments}>
+        {attachments.map((img, i) => {
+          return (
+            <Badge
+              className={classes.preview}
+              component="div"
+              badgeContent={
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleRemoveImage(img)}
+                  className={classes.removeButton}
+                >
+                  <DeleteForeverIcon />
+                </IconButton>
+              }
+              color="secondary"
+            >
+              <img className={classes.image} src={img} alt={`preview ${i}`} />
+            </Badge>
+          );
+        })}
+      </DialogContent>
     </Dialog>
   );
 };
