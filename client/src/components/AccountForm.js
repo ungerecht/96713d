@@ -67,7 +67,7 @@ const AccountForm = ({ type, handleSubmit, formErrorMessage }) => {
               aria-label="email"
               label="E-mail address"
               name="email"
-              type="text"
+              type="email"
             />
           </FormControl>
         </Grid>
