@@ -77,24 +77,13 @@ const UploadDialog = ({ open, onClose, attachments, setAttachments }) => {
   };
 
   const uploadImage = async (file) => {
-    //env variable cloudname
-    const cloudName = "dqzdb34jp";
-    // const apiKey = 763453623413197;
-
+    const instance = axios.create();
     const formData = new FormData();
     formData.append("file", file);
-    //formData.append("upload_preset", process.env.CLOUDINARY_UPLOAD_PRESET)
-    formData.append("upload_preset", "kcggo41k");
-
-    // const { data } = await axios.post(
-    //   `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
-    //   formData
-    // );
-
-    const instance = axios.create();
+    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
 
     const { data } = await instance.post(
-      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`,
       formData
     );
     return data;
@@ -135,6 +124,7 @@ const UploadDialog = ({ open, onClose, attachments, setAttachments }) => {
         {attachments.map((img, i) => {
           return (
             <Badge
+              key={`preview ${i}`}
               className={classes.preview}
               component="div"
               badgeContent={
