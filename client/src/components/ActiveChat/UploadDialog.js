@@ -63,30 +63,36 @@ const useStyles = makeStyles((theme) => ({
 
 const UploadDialog = ({ open, onClose, attachments, setAttachments }) => {
   const classes = useStyles();
+  const instance = axios.create();
 
   const handleInputChange = async (event) => {
     event.preventDefault();
-    const file = event.target.files[0];
     try {
-      const data = await uploadImage(file);
-      setAttachments((prev) => [...prev, data.url]);
+      const data = await uploadImages(event.target.files);
+      setAttachments((prev) => [
+        ...prev,
+        ...data.map((item) => {
+          return item.data.url;
+        }),
+      ]);
       event.target.value = "";
     } catch (error) {
       console.log(error);
     }
   };
 
-  const uploadImage = async (file) => {
-    const instance = axios.create();
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
-
-    const { data } = await instance.post(
-      `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`,
-      formData
+  const uploadImages = (files) => {
+    return Promise.all(
+      [...files].map((file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+        return instance.post(
+          `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`,
+          formData
+        );
+      })
     );
-    return data;
   };
 
   const handleRemoveImage = (img) => {
@@ -117,6 +123,7 @@ const UploadDialog = ({ open, onClose, attachments, setAttachments }) => {
             type="file"
             accept="image/*"
             onChange={(e) => handleInputChange(e)}
+            multiple
           />
         </label>
       </DialogContent>
