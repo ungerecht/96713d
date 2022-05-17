@@ -1,3 +1,12 @@
+## About
+
+This is a frontend project assessment I did with [Hatchways.io](https://hatchways.io) which involved completing three tickets: 
+- A Bugfix
+- UI Redesign
+- New Feature
+
+You can see my progress and feedback by looking at the closed pull requests. <br><br><br>
+
 # Messenger
 
 A one-to-one realtime chat app.
